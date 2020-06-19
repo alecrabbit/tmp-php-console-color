@@ -8,17 +8,17 @@
   "require-dev": {
     "phpunit/phpunit": "^9.0",
     "nunomaduro/collision": "^4.0",
-    "symfony/var-dumper": "^5.*"
+    "symfony/var-dumper": "^5.1"
   },
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "AlecRabbit\\ConsoleColor\\": "src\\ConsoleColor"
+      "AlecRabbit\\Console\\Color\\": "src\\Console\\Color"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "AlecRabbit\\Tests\\ConsoleColor\\": "tests"
+      "AlecRabbit\\Tests\\Console\\Color\\": "tests"
     }
   },
   "minimum-stability": "beta",
