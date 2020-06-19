@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace AlecRabbit\ConsoleColor;
+namespace AlecRabbit\Console\Color;
 
 class BasicClass
 {

@@ -18,7 +18,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "AlecRabbit\\Tests\\Console\\Color\\": "tests"
+      "AlecRabbit\\Tests\\Console\\Color\\": "tests\\Console\\Color"
     }
   },
   "minimum-stability": "beta",

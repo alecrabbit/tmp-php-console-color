@@ -1,8 +1,8 @@
 <?php
 
-namespace AlecRabbit\Tests\ConsoleColor;
+namespace AlecRabbit\Tests\Console\Color;
 
-use AlecRabbit\ConsoleColor\BasicClass;
+use AlecRabbit\Console\Color\BasicClass;
 use PHPUnit\Framework\TestCase;
 
 class BasicTest extends TestCase
