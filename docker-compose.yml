@@ -13,5 +13,5 @@ services:
     environment:
       DOCKER_TERM: "${TERM:-}"      # pass host $TERM variable
       COLORTERM: "${COLORTERM:-}"   # pass host $COLORTERM variable
-    command: tail -f /dev/null
-#    command: keep-alive.sh  # faster container restart
+#    command: tail -f /dev/null
+    command: keep-alive.sh  # faster container restart
