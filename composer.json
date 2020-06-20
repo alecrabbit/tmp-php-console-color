@@ -14,7 +14,8 @@
   "autoload": {
     "psr-4": {
       "AlecRabbit\\Console\\Color\\": "src\\Console\\Color",
-      "AlecRabbit\\Color\\": "src\\Color"
+      "AlecRabbit\\Color\\": "src\\Color",
+      "AlecRabbit\\Traits\\": "src\\Traits"
     },
     "files": [
       "src\\Color\\bootstrap.php"
@@ -23,7 +24,8 @@
   "autoload-dev": {
     "psr-4": {
       "AlecRabbit\\Tests\\Console\\Color\\": "tests\\Console\\Color",
-      "AlecRabbit\\Tests\\Color\\": "tests\\Color"
+      "AlecRabbit\\Tests\\Color\\": "tests\\Color",
+      "AlecRabbit\\Tests\\Traits\\": "tests\\Traits"
     }
   },
   "minimum-stability": "beta",
