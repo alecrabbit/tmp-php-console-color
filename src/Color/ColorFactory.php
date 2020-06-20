@@ -8,7 +8,7 @@ use AlecRabbit\Color\Contracts\ColorTables;
 use AlecRabbit\Color\Exceptions\InvalidColorIndex;
 use AlecRabbit\Traits\PrivateConstruct;
 
-final class Factory
+final class ColorFactory
 {
     use PrivateConstruct;
 

@@ -6,9 +6,11 @@ namespace AlecRabbit\Color;
 
 use AlecRabbit\Color\Exceptions\InvalidArgumentException;
 use AlecRabbit\Color\Exceptions\Messages;
+use AlecRabbit\Traits\PrivateConstruct;
 
 final class Converter
 {
+    use PrivateConstruct;
 
     public static function rgba2hex(int $r, int $g, int $b, ?int $a = null): string
     {
