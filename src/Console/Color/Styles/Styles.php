@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace AlecRabbit\Console\Color\Styles;
 
-use AlecRabbit\Color\Color;
+use AlecRabbit\Color\RGBa;
 use AlecRabbit\Console\Color\Styles\Contracts\Defaults;
 
 final class Styles
@@ -15,8 +15,8 @@ final class Styles
     {
         $styles = $styles ?? Defaults::STYLES;
         foreach ($styles as $name => $style) {
-            $foreground = new Color($style[Defaults::FG]);
-            $background = new Color($style[Defaults::BG]);
+            $foreground = new RGBa($style[Defaults::FG]);
+            $background = new RGBa($style[Defaults::BG]);
             $effect = new Effect($style[Defaults::EF]);
             $this->setStyle($name, new Style($foreground, $background, $effect));
         }

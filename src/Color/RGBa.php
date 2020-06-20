@@ -6,8 +6,10 @@ namespace AlecRabbit\Color;
 
 use AlecRabbit\Color\Contracts\ColorInterface;
 
-class Color implements ColorInterface
+class RGBa implements ColorInterface
 {
+    private const FORMAT = '#%s%s%s%s';
+
     /**
      * @var int
      */
@@ -41,23 +43,40 @@ class Color implements ColorInterface
         $this->a = byte($a);
     }
 
+    /** @inheritDoc */
     public function red(): int
     {
         return $this->r;
     }
 
+    /** @inheritDoc */
     public function green(): int
     {
         return $this->g;
     }
 
+    /** @inheritDoc */
     public function blue(): int
     {
         return $this->b;
     }
 
+    /** @inheritDoc */
     public function alfa(): int
     {
         return $this->a;
+    }
+
+    /** @inheritDoc */
+    public function hex(bool $withAlfa = true): string
+    {
+        return
+            sprintf(
+                self::FORMAT,
+                str_pad(dechex($this->r), 2, '0', STR_PAD_LEFT),
+                str_pad(dechex($this->g), 2, '0', STR_PAD_LEFT),
+                str_pad(dechex($this->b), 2, '0', STR_PAD_LEFT),
+                $withAlfa ? str_pad(dechex($this->a), 2, '0', STR_PAD_LEFT) : '',
+            );
     }
 }

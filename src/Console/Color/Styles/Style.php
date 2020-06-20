@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace AlecRabbit\Console\Color\Styles;
 
-use AlecRabbit\Color\Color;
+use AlecRabbit\Color\RGBa;
 
 final class Style
 {
-    public function __construct(Color $fg = null, Color $bg = null, Effect $effect = null)
+    public function __construct(RGBa $fg = null, RGBa $bg = null, Effect $effect = null)
     {
     }
 }

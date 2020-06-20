@@ -25,4 +25,10 @@ interface ColorInterface
      * @return int 0..255
      */
     public function alfa(): int;
+
+    /**
+     * @param bool $withAlfa
+     * @return string Hex color representation
+     */
+    public function hex(bool $withAlfa = true): string;
 }
