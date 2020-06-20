@@ -80,8 +80,8 @@ abstract class DefaultTheme
         }
         if (!\is_string($arguments[0])) {
             throw new \InvalidArgumentException(
-                'Argument for [' . static::class . '::' . $name . '] should be a "string", "'
-                . get_debug_type($arguments[0]) . '" provided.'
+                'Argument 1 for [' . static::class . '::' . $name . '] should be a "string", "'
+                . \gettype($arguments[0]) . '" provided.'
             );
         }
     }

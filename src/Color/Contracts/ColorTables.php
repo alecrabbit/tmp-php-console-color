@@ -10,6 +10,25 @@ final class ColorTables
 {
     use PrivateConstruct;
 
+//                      8bit    4bit    4bit      24bit
+//                               FG      BG
+// Black                 00      30      40       000000
+// Red                   01      31      41       800000
+// Green                 02      32      42       008000
+// Yellow                03      33      43       808000
+// Blue                  04      34      44       000080
+// Magenta               05      35      45       800080
+// Cyan                  06      36      46       008080
+// White                 07      37      47       c0c0c0
+// Bright Black          08      90      100      808080
+// Bright Red            09      91      101      ff0000
+// Bright Green          10      92      102      00ff00
+// Bright Yellow         11      93      103      ffff00
+// Bright Blue           12      94      104      0000ff
+// Bright Magenta        13      95      105      ff00ff
+// Bright Cyan           14      96      106      00ffff
+// Bright White          15      97      107      ffffff
+
     public const COLORS_4_TO_8 =
         [
             30 => 0,    // Black

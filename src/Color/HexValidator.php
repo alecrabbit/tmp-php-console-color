@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace AlecRabbit\Console\Color\Validators;
+namespace AlecRabbit\Color;
 
-use AlecRabbit\Console\Color\Exceptions\InvalidArgumentException;
-use AlecRabbit\Console\Color\Exceptions\Messages;
+use AlecRabbit\Color\Exceptions\InvalidArgumentException;
+use AlecRabbit\Color\Exceptions\Messages;
 
-final class Validator
+final class HexValidator
 {
     public const EXPECTED_FORMATS = ['#rgb', '#rgba', '#rrggbb', '#rrggbbaa',];
     public const REGEXP = "/^((?:[\da-f]{3}){1,2}|(?:[\da-f]{4}){1,2})$/i";

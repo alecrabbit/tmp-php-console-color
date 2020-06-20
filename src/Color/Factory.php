@@ -32,6 +32,27 @@ final class Factory
     }
 
     /**
+     * @param int $r
+     * @param int $g
+     * @param int $b
+     * @param int|null $a
+     * @return RGBa
+     */
+    public static function fromRGBaValues(int $r, int $g, int $b, int $a = null): RGBa
+    {
+        return new RGBa($r, $g, $b, $a ?? 0xff);
+    }
+
+    /**
+     * @param int|string $hex
+     * @return RGBa
+     */
+    public static function fromHexValue($hex): RGBa
+    {
+        return new RGBa(...Converter::hex2rgba($hex));
+    }
+
+    /**
      * @param int $color
      */
     private static function assert4bitColor(int $color): void

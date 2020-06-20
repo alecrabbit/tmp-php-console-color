@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AlecRabbit\Console\Color\Converters;
+namespace AlecRabbit\Color;
 
-use AlecRabbit\Console\Color\Exceptions\InvalidArgumentException;
-use AlecRabbit\Console\Color\Exceptions\Messages;
-use AlecRabbit\Console\Color\Validators\Validator;
+use AlecRabbit\Color\Exceptions\InvalidArgumentException;
+use AlecRabbit\Color\Exceptions\Messages;
 
 final class Converter
 {
@@ -16,26 +15,7 @@ final class Converter
         $hex = '';
         $c = [$r, $g, $b, $a ?? 0xff];
         foreach ($c as $value) {
-            $hex .= self::byte2hex($value);
-        }
-        return $hex;
-    }
-
-    /**
-     * @param int $byte
-     * @return string
-     */
-    public static function byte2hex(int $byte): string
-    {
-        if (0 > $byte) {
-            $byte = 0;
-        }
-        if (255 < $byte) {
-            $byte = 255;
-        }
-        $hex = dechex($byte);
-        if (1 === \strlen($hex)) {
-            $hex = '0' . $hex;
+            $hex .= hex(byte($value));
         }
         return $hex;
     }
@@ -62,7 +42,7 @@ final class Converter
         if (8 < \strlen($hex)) {
             $hex = substr($hex, 0, 8);
         }
-        Validator::assertHex($hex);
+        HexValidator::assertHex($hex);
         if (6 === \strlen($hex)) {
             $hex .= 'ff';
         }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AlecRabbit\Console\Color\Exceptions;
+namespace AlecRabbit\Color\Exceptions;
 
 class InvalidArgumentException extends \InvalidArgumentException
 {

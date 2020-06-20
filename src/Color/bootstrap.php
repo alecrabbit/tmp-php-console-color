@@ -20,3 +20,15 @@ if (!function_exists('byte')) {
         return $b;
     }
 }
+
+if (!function_exists('hex')) {
+    /**
+     * @param int $b
+     * @return string
+     */
+    function hex(int $b): string
+    {
+        return
+            str_pad(dechex($b), 2, '0', STR_PAD_LEFT);
+    }
+}

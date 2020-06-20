@@ -6,7 +6,7 @@ namespace AlecRabbit\Color;
 
 use AlecRabbit\Color\Contracts\ColorInterface;
 
-class RGBa implements ColorInterface
+final class RGBa implements ColorInterface
 {
     private const FORMAT = '#%s%s%s%s';
 
@@ -73,10 +73,10 @@ class RGBa implements ColorInterface
         return
             sprintf(
                 self::FORMAT,
-                str_pad(dechex($this->r), 2, '0', STR_PAD_LEFT),
-                str_pad(dechex($this->g), 2, '0', STR_PAD_LEFT),
-                str_pad(dechex($this->b), 2, '0', STR_PAD_LEFT),
-                $withAlfa ? str_pad(dechex($this->a), 2, '0', STR_PAD_LEFT) : '',
+                hex($this->r),
+                hex($this->g),
+                hex($this->b),
+                $withAlfa ? hex($this->a) : '',
             );
     }
 }
