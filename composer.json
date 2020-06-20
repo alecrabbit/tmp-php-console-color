@@ -13,12 +13,14 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "AlecRabbit\\Console\\Color\\": "src\\Console\\Color"
+      "AlecRabbit\\Console\\Color\\": "src\\Console\\Color",
+      "AlecRabbit\\Color\\": "src\\Color"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "AlecRabbit\\Tests\\Console\\Color\\": "tests\\Console\\Color"
+      "AlecRabbit\\Tests\\Console\\Color\\": "tests\\Console\\Color",
+      "AlecRabbit\\Tests\\Color\\": "tests\\Color"
     }
   },
   "minimum-stability": "beta",

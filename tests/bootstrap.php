@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use NunoMaduro\Collision\Provider;
 use Symfony\Component\VarDumper\Cloner\VarCloner;
 use Symfony\Component\VarDumper\Dumper\CliDumper;
 use Symfony\Component\VarDumper\Dumper\ContextProvider\CliContextProvider;
@@ -26,4 +27,4 @@ VarDumper::setHandler(
     }
 );
 
-(new \NunoMaduro\Collision\Provider())->register();
+(new Provider())->register();
