@@ -14,7 +14,8 @@ use Symfony\Component\VarDumper\VarDumper;
 $cloner = new VarCloner();
 $fallbackDumper = \in_array(\PHP_SAPI, ['cli', 'phpdbg']) ? new CliDumper() : new HtmlDumper();
 $dumper = new ServerDumper(
-    'tcp://127.0.0.1:9912', $fallbackDumper,
+    'tcp://127.0.0.1:9912',
+    $fallbackDumper,
     [
         'cli' => new CliContextProvider(),
         'source' => new SourceContextProvider(),

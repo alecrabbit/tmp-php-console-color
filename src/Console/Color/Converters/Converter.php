@@ -94,5 +94,4 @@ final class Converter
         }
         return $hex;
     }
-
 }

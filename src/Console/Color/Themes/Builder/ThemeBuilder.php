@@ -21,7 +21,7 @@ final class ThemeBuilder
 
     public function addStyle(string $name, Style $style): self
     {
-        $this->styles->set($name, $style);
+        $this->styles->setStyle($name, $style);
         return $this;
     }
 

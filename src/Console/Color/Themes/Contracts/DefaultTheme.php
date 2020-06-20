@@ -90,5 +90,4 @@ abstract class DefaultTheme
     {
         return $text;
     }
-
 }

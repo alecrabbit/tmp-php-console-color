@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AlecRabbit\Console\Color\Styles;
 
+use AlecRabbit\Color\Color;
 use AlecRabbit\Console\Color\Styles\Contracts\Defaults;
 
 final class Styles
@@ -17,11 +18,11 @@ final class Styles
             $foreground = new Color($style[Defaults::FG]);
             $background = new Color($style[Defaults::BG]);
             $effect = new Effect($style[Defaults::EF]);
-            $this->set($name, new Style($foreground, $background, $effect));
+            $this->setStyle($name, new Style($foreground, $background, $effect));
         }
     }
-    
-    public function set(string $name, Style $style): self
+
+    public function setStyle(string $name, Style $style): self
     {
         $this->assertName($name);
         $this->styles[$name] = $style;

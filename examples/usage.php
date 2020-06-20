@@ -11,7 +11,7 @@ use AlecRabbit\Console\Color\Themes\Theme;
 use AlecRabbit\Console\Color\Themes\Themes;
 
 $styles = new Styles();
-$styles->set('comment', new Style());
+$styles->setStyle('comment', new Style());
 
 Themes::add('solarized', new Theme($styles));
 $theme = Themes::get('solarized');

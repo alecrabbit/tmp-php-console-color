@@ -15,7 +15,10 @@
     "psr-4": {
       "AlecRabbit\\Console\\Color\\": "src\\Console\\Color",
       "AlecRabbit\\Color\\": "src\\Color"
-    }
+    },
+    "files": [
+      "src\\Color\\bootstrap.php"
+    ]
   },
   "autoload-dev": {
     "psr-4": {
