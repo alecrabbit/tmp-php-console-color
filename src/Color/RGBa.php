@@ -8,27 +8,18 @@ use AlecRabbit\Color\Contracts\ColorInterface;
 
 final class RGBa implements ColorInterface
 {
-    private const FORMAT = '#%s%s%s%s';
+    private const HEX_FORMAT = '#%s%s%s%s'; // #rrggbbaa
 
-    /**
-     * @var int
-     */
+    /** @var int */
     private $r;
-    /**
-     * @var int
-     */
+    /** @var int */
     private $g;
-    /**
-     * @var int
-     */
+    /** @var int */
     private $b;
-    /**
-     * @var int|null
-     */
+    /** @var int */
     private $a;
 
     /**
-     * Color constructor.
      * @param int $r
      * @param int $g
      * @param int $b
@@ -36,11 +27,10 @@ final class RGBa implements ColorInterface
      */
     public function __construct(int $r, int $g, int $b, int $a = null)
     {
-        $a = $a ?? 0xff;
         $this->r = byte($r);
         $this->g = byte($g);
         $this->b = byte($b);
-        $this->a = byte($a);
+        $this->a = byte($a ?? 0xff);
     }
 
     /** @inheritDoc */
@@ -72,7 +62,7 @@ final class RGBa implements ColorInterface
     {
         return
             sprintf(
-                self::FORMAT,
+                self::HEX_FORMAT,
                 hex($this->r),
                 hex($this->g),
                 hex($this->b),
