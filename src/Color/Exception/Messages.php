@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AlecRabbit\Color\Exceptions;
+namespace AlecRabbit\Color\Exception;
 
 final class Messages
 {

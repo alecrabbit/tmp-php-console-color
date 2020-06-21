@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AlecRabbit\Console\Color\Styles\Contracts;
+namespace AlecRabbit\Console\Color\Style\Contracts;
 
 final class Defaults
 {

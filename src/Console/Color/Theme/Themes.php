@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace AlecRabbit\Console\Color\Themes;
+namespace AlecRabbit\Console\Color\Theme;
 
-use AlecRabbit\Console\Color\Styles\Styles;
+use AlecRabbit\Console\Color\Style\Styles;
 
 final class Themes
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AlecRabbit\Console\Color\Styles;
+namespace AlecRabbit\Console\Color\Style;
 
 class Effect
 {

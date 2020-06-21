@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AlecRabbit\Console\Color\Themes\Contracts;
+namespace AlecRabbit\Console\Color\Theme\Contracts;
 
-use AlecRabbit\Console\Color\Styles\Style;
-use AlecRabbit\Console\Color\Styles\Styles;
+use AlecRabbit\Console\Color\Style\Style;
+use AlecRabbit\Console\Color\Style\Styles;
 
 /**
  * @method debug(string $text)

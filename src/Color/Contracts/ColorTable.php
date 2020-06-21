@@ -6,7 +6,7 @@ namespace AlecRabbit\Color\Contracts;
 
 use AlecRabbit\Traits\PrivateConstruct;
 
-final class ColorTables
+final class ColorTable
 {
     use PrivateConstruct;
 

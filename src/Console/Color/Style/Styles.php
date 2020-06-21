@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AlecRabbit\Console\Color\Styles;
+namespace AlecRabbit\Console\Color\Style;
 
 use AlecRabbit\Color\RGBa;
-use AlecRabbit\Console\Color\Styles\Contracts\Defaults;
+use AlecRabbit\Console\Color\Style\Contracts\Defaults;
 
 final class Styles
 {

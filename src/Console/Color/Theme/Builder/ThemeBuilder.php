@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AlecRabbit\Console\Color\Themes\Builder;
+namespace AlecRabbit\Console\Color\Theme\Builder;
 
-use AlecRabbit\Console\Color\Styles\Style;
-use AlecRabbit\Console\Color\Styles\Styles;
-use AlecRabbit\Console\Color\Themes\Theme;
+use AlecRabbit\Console\Color\Style\Style;
+use AlecRabbit\Console\Color\Style\Styles;
+use AlecRabbit\Console\Color\Theme\Theme;
 
 final class ThemeBuilder
 {

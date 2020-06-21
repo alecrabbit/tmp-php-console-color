@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace AlecRabbit\Color;
 
-use AlecRabbit\Color\Contracts\ColorTables;
-use AlecRabbit\Color\Exceptions\InvalidColorIndex;
+use AlecRabbit\Color\Contracts\ColorTable;
+use AlecRabbit\Color\Exception\InvalidColorIndex;
 use AlecRabbit\Traits\PrivateConstruct;
 
 final class ColorFactory
@@ -19,7 +19,7 @@ final class ColorFactory
     public static function fromConsole4bit(int $color): RGBa
     {
         self::assert4bitColor($color);
-        return self::fromConsole8bit(ColorTables::COLORS_4_TO_8[$color]);
+        return self::fromConsole8bit(ColorTable::COLORS_4_TO_8[$color]);
     }
 
     /**
@@ -28,7 +28,7 @@ final class ColorFactory
      */
     public static function fromConsole8bit(int $color): RGBa
     {
-        return new RGBa(...ColorTables::COLORS_8_TO_24[byte($color)]);
+        return new RGBa(...ColorTable::COLORS_8_TO_24[byte($color)]);
     }
 
     /**
@@ -57,10 +57,10 @@ final class ColorFactory
      */
     private static function assert4bitColor(int $color): void
     {
-        if (!array_key_exists($color, ColorTables::COLORS_4_TO_8)) {
+        if (!array_key_exists($color, ColorTable::COLORS_4_TO_8)) {
             throw new InvalidColorIndex(
                 sprintf(
-                    Exceptions\Messages::VALUE_CAN_NOT_BE_ACCEPTED,
+                    Exception\Messages::VALUE_CAN_NOT_BE_ACCEPTED,
                     $color
                 )
             );

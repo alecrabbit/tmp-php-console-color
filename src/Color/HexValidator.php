@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace AlecRabbit\Color;
 
-use AlecRabbit\Color\Exceptions\InvalidArgumentException;
-use AlecRabbit\Color\Exceptions\Messages;
+use AlecRabbit\Color\Exception\InvalidArgumentException;
+use AlecRabbit\Color\Exception\Messages;
 
 final class HexValidator
 {
