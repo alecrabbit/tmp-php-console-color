@@ -45,7 +45,8 @@ abstract class DefaultTheme
 
     public function __construct(Styles $styles)
     {
-        foreach ($styles->getStyles() as $name => $style) {
+        foreach ($styles->getStyles() as $style) {
+            $name = $style->getName();
             $this->styles[$name] = $style;
         }
     }

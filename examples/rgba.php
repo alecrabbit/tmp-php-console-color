@@ -9,13 +9,13 @@ use AlecRabbit\Console\Color\Factory\StyleFactory;
 use AlecRabbit\Console\Color\Style\Contracts\Defaults;
 use AlecRabbit\Console\Color\Theme\Theme;
 
+use const AlecRabbit\NO_COLOR_TERMINAL;
+
 //$styles = new Styles();
 //$styles->setStyle('comment', new Style());
 //
 //Themes::add('solarized', new Theme($styles));
 //$theme = Themes::get('solarized');
-//echo $theme->comment('comment');
-//echo PHP_EOL;
 
 $definitions = [
     'red' => [
@@ -28,5 +28,10 @@ $definitions = [
         Defaults::FG => [33], // 4bitColor => [int]
     ],
 ];
-$styles = StyleFactory::getStylesFromDefinitions($definitions);
-$t = new Theme($styles);
+$styles = StyleFactory::createStylesFromDefinitions($definitions);
+$theme = new Theme($styles);
+dump($theme);
+echo $theme->comment('comment', NO_COLOR_TERMINAL);
+echo PHP_EOL;
+echo $theme->comment('comment');
+echo PHP_EOL;

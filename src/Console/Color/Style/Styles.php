@@ -4,26 +4,39 @@ declare(strict_types=1);
 
 namespace AlecRabbit\Console\Color\Style;
 
+use AlecRabbit\Color\ColorFactory;
 use AlecRabbit\Color\RGBa;
 use AlecRabbit\Console\Color\Style\Contracts\Defaults;
 
 final class Styles
 {
-    protected $styles = [];
+    /**
+     * @var Style[]
+     */
+    private $styles = [];
 
-    public function __construct(array $styles = null)
+    /**
+     * Styles constructor.
+     * @param Style[] $styles
+     */
+    public function __construct(array $styles)
     {
-        $styles = $styles ?? Defaults::STYLES;
-        foreach ($styles as $name => $style) {
-            $foreground = new RGBa($style[Defaults::FG]);
-            $background = new RGBa($style[Defaults::BG]);
-            $effect = new Effect($style[Defaults::EF]);
-            $this->setStyle($name, new Style($foreground, $background, $effect));
+        $this->initialize($styles);
+    }
+
+    /**
+     * @param Style[] $styles
+     */
+    private function initialize(array $styles): void
+    {
+        foreach ($styles as $style) {
+            $this->setStyle($style);
         }
     }
 
-    public function setStyle(string $name, Style $style): self
+    public function setStyle(Style $style): self
     {
+        $name = $style->getName();
         $this->assertName($name);
         $this->styles[$name] = $style;
         return $this;
@@ -32,10 +45,12 @@ final class Styles
     private function assertName(string $name): void
     {
         // TODO
+        // name should NOT be empty
+        // name should be unique for this instance
     }
 
     /**
-     * @return array<Style>
+     * @return Style[]
      */
     public function getStyles(): array
     {

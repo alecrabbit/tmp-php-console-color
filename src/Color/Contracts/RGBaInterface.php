@@ -30,5 +30,21 @@ interface ColorInterface
      * @param bool $withAlfa
      * @return string Hex color representation
      */
-    public function hex(bool $withAlfa = true): string;
+    public function hex(bool $withAlfa = false): string;
+
+    /**
+     * @return string
+     */
+    public function rgb(): string;
+
+    /**
+     * @return string
+     */
+    public function rgba(): string;
+
+    /**
+     * @param float $a
+     * @return $this
+     */
+    public function setAlfa(float $a): self;
 }
