@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace AlecRabbit\Color\Contracts;
 
-interface ColorInterface
+interface RGBaInterface
 {
     /**
      * @return int 0..255
@@ -27,17 +27,20 @@ interface ColorInterface
     public function alfa(): int;
 
     /**
+     * Hex color representation '#rrggbb[aa]'
      * @param bool $withAlfa
-     * @return string Hex color representation
+     * @return string
      */
     public function hex(bool $withAlfa = false): string;
 
     /**
+     * RGB color representation 'rgb(0..255, 0..255, 0..255)'
      * @return string
      */
     public function rgb(): string;
 
     /**
+     * RGBa color representation 'rgba(0..255, 0..255, 0..255, 0..1)'
      * @return string
      */
     public function rgba(): string;

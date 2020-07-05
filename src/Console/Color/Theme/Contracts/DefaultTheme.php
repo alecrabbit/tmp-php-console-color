@@ -4,58 +4,70 @@ declare(strict_types=1);
 
 namespace AlecRabbit\Console\Color\Theme\Contracts;
 
+use AlecRabbit\Console\Color\Color;
 use AlecRabbit\Console\Color\Style\Style;
 use AlecRabbit\Console\Color\Style\Styles;
 
+use const AlecRabbit\NO_COLOR_TERMINAL;
+
 /**
- * @method debug(string $text)
- * @method comment(string $text)
- * @method info(string $text)
- * @method error(string $text)
- * @method warning(string $text)
- * @method yellow(string $text)
- * @method green(string $text)
- * @method red(string $text)
- * @method cyan(string $text)
- * @method magenta(string $text)
- * @method black(string $text)
- * @method blue(string $text)
- * @method lightGray(string $text)
- * @method darkGray(string $text)
- * @method lightRed(string $text)
- * @method lightGreen(string $text)
- * @method lightYellow(string $text)
- * @method lightBlue(string $text)
- * @method lightMagenta(string $text)
- * @method lightCyan(string $text)
- * @method white(string $text)
- * @method italic(string $text)
- * @method bold(string $text)
- * @method dark(string $text)
- * @method crossed(string $text)
- * @method darkItalic(string $text)
- * @method whiteBold(string $text)
- * @method underlined(string $text)
- * @method underlinedBold(string $text)
- * @method underlinedItalic(string $text)
+ * @method debug(string $text, ?int $colorLevel = null)
+ * @method comment(string $text, ?int $colorLevel = null)
+ * @method info(string $text, ?int $colorLevel = null)
+ * @method error(string $text, ?int $colorLevel = null)
+ * @method warning(string $text, ?int $colorLevel = null)
+ * @method yellow(string $text, ?int $colorLevel = null)
+ * @method green(string $text, ?int $colorLevel = null)
+ * @method red(string $text, ?int $colorLevel = null)
+ * @method cyan(string $text, ?int $colorLevel = null)
+ * @method magenta(string $text, ?int $colorLevel = null)
+ * @method black(string $text, ?int $colorLevel = null)
+ * @method blue(string $text, ?int $colorLevel = null)
+ * @method lightGray(string $text, ?int $colorLevel = null)
+ * @method darkGray(string $text, ?int $colorLevel = null)
+ * @method lightRed(string $text, ?int $colorLevel = null)
+ * @method lightGreen(string $text, ?int $colorLevel = null)
+ * @method lightYellow(string $text, ?int $colorLevel = null)
+ * @method lightBlue(string $text, ?int $colorLevel = null)
+ * @method lightMagenta(string $text, ?int $colorLevel = null)
+ * @method lightCyan(string $text, ?int $colorLevel = null)
+ * @method white(string $text, ?int $colorLevel = null)
+ * @method italic(string $text, ?int $colorLevel = null)
+ * @method bold(string $text, ?int $colorLevel = null)
+ * @method dark(string $text, ?int $colorLevel = null)
+ * @method crossed(string $text, ?int $colorLevel = null)
+ * @method darkItalic(string $text, ?int $colorLevel = null)
+ * @method whiteBold(string $text, ?int $colorLevel = null)
+ * @method underlined(string $text, ?int $colorLevel = null)
+ * @method underlinedBold(string $text, ?int $colorLevel = null)
+ * @method underlinedItalic(string $text, ?int $colorLevel = null)
  */
 abstract class DefaultTheme
 {
+    /** @var array */
     protected $styles = [];
+    /** @var Color */
+    protected $color;
+    /** @var int */
+    protected $colorLevel;
 
-    public function __construct(Styles $styles)
+    public function __construct(Styles $styles, Color $color = null)
     {
         foreach ($styles->getStyles() as $style) {
             $name = $style->getName();
             $this->styles[$name] = $style;
         }
+        $this->color = $color ?? new Color();
+        $this->colorLevel = $this->color->getColorLevel();
     }
 
     public function __call(string $name, array $arguments): string
     {
         $this->assertMethodName($name);
         $this->assertArgs($name, $arguments);
-        return $this->apply($this->styles[$name], $arguments[0]);
+        $colorLevel = $arguments[1] ?? null;
+        $text = $arguments[0];
+        return $this->apply($name, $text, $colorLevel);
     }
 
     /**
@@ -74,20 +86,40 @@ abstract class DefaultTheme
      */
     protected function assertArgs(string $name, array $arguments): void
     {
-        if (1 !== \count($arguments)) {
+        $count = \count($arguments);
+        if (1 > $count || $count > 2) {
             throw new \ArgumentCountError(
-                'Method [' . static::class . '::' . $name . '] accepts only one argument.'
+                sprintf(
+                    'Method [%s::%s] accepts 1 or 2 arguments, %s provided.',
+                    static::class,
+                    $name,
+                    $count
+                )
             );
         }
         if (!\is_string($arguments[0])) {
             throw new \InvalidArgumentException(
-                'Argument 1 for [' . static::class . '::' . $name . '] should be a "string", "'
-                . \gettype($arguments[0]) . '" provided.'
+                sprintf(
+                    'Argument 1 for [%s::%s] should be a "string", "%s" provided.',
+                    static::class,
+                    $name,
+                    \gettype($arguments[0])
+                )
+            );
+        }
+        if (!\is_int($arguments[1] ?? 0)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    'Argument 2 for [%s::%s] should be an "int", "%s" provided.',
+                    static::class,
+                    $name,
+                    \gettype($arguments[1])
+                )
             );
         }
     }
 
-    private function apply(Style $style, string $text): string
+    private function apply(string $styleName, string $text, ?int $colorLevel = null): string
     {
         return $text;
     }

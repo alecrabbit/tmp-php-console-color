@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace AlecRabbit\Color;
 
-use AlecRabbit\Color\Contracts\ColorInterface;
+use AlecRabbit\Color\Contracts\RGBaInterface;
 
-final class RGBa implements ColorInterface
+final class RGBa implements RGBaInterface
 {
     private const HEX_FORMAT = '#%s%s%s%s'; // #rrggbbaa
+    private const RGB_FORMAT = 'rgb(%u, %u, %u)'; // rgb(0..255, 0..255, 0..255)
+    private const RGBA_FORMAT = 'rgba(%u, %u, %u, %.3f)'; // rgb(0..255, 0..255, 0..255, 0..1)
 
     /** @var int */
     private $r;
@@ -58,7 +60,7 @@ final class RGBa implements ColorInterface
     }
 
     /** @inheritDoc */
-    public function hex(bool $withAlfa = true): string
+    public function hex(bool $withAlfa = false): string
     {
         return
             sprintf(
@@ -68,5 +70,43 @@ final class RGBa implements ColorInterface
                 hex($this->b),
                 $withAlfa ? hex($this->a) : '',
             );
+    }
+
+    /** @inheritDoc */
+    public function rgb(): string
+    {
+        return
+            sprintf(
+                self::RGB_FORMAT,
+                $this->r,
+                $this->g,
+                $this->b,
+            );
+    }
+
+    /** @inheritDoc */
+    public function rgba(): string
+    {
+        return
+            sprintf(
+                self::RGBA_FORMAT,
+                $this->r,
+                $this->g,
+                $this->b,
+                $this->a / 255,
+            );
+    }
+
+    public function setAlfa(float $a): RGBaInterface
+    {
+        if (0 > $a) {
+            $a = 0.0;
+        }
+        if (1 < $a) {
+            $a = 1.0;
+        }
+        $c = clone $this;
+        $c->a = (int)$a * 255;
+        return $c;
     }
 }
